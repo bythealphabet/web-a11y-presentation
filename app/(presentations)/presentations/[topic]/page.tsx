@@ -1,9 +1,10 @@
 import clsx from "clsx";
-import { CardsProps, SlideCard } from "@/components/cards/cards";
+import { CardsProps, Card } from "@/components/cards/cards";
 import styles from "./presentation.module.scss";
 
 const dummyData: CardsProps[] = [
   {
+    kind: "slide",
     title: "Card 1",
     description: "This is the description for card 1.",
     link: {
@@ -16,6 +17,7 @@ const dummyData: CardsProps[] = [
     },
   },
   {
+    kind: "slide",
     title: "Card 2",
     description: "This is the description for card 2.",
     link: {
@@ -27,7 +29,6 @@ const dummyData: CardsProps[] = [
       alt: "Card 2 Image",
     },
   },
-  // Add more cards as needed
 ];
 
 function WebA11ySlides({ params }) {
@@ -37,7 +38,7 @@ function WebA11ySlides({ params }) {
       <ul role="list">
         {dummyData.map((card, index) => (
           <li key={index}>
-            <SlideCard {...card} />
+            <Card {...card} />
           </li>
         ))}
       </ul>

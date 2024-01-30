@@ -1,8 +1,9 @@
-import { Card, CardBody, CardHeader, Heading } from "@chakra-ui/react";
-import Image from "next/image";
 import Link from "next/link";
+import styles from "./cards.module.scss";
+import clsx from "clsx";
 
 export interface CardsProps {
+  kind: "slide" | "topic";
   title: string;
   description: string;
   link: {
@@ -15,18 +16,13 @@ export interface CardsProps {
   };
 }
 
-export function SlideCard({ title, description, link, image }: CardsProps) {
+export function Card({ kind, title, description, link, image }: CardsProps) {
   return (
-    <Card>
-      <CardHeader>
-        <h3>{title}</h3>
-      </CardHeader>
-
-      <CardBody>
-        <p>{description}</p>
-        <img src={image.url} alt={image.alt} width={300} height={300} />
-        <Link href={link.href}>{link.label}</Link>
-      </CardBody>
-    </Card>
+    <div className={clsx(styles.root)}>
+      <h3>{title}</h3>
+      <p>{description}</p>
+      <img src={image.url} alt={image.alt} width={300} height={300} />
+      <Link href={link.href}>{link.label}</Link>
+    </div>
   );
 }
