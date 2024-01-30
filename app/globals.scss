@@ -1,0 +1,155 @@
+ /* Box sizing rules */
+ *,
+ *::before,
+ *::after {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ /* Remove default margin */
+ body,
+ h1,
+ h2,
+ h3,
+ h4,
+ p,
+ figure,
+ blockquote,
+ dl,
+ dd {
+   margin-block-end: 0;
+ }
+
+ /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ ul[role="list"],
+ ol[role="list"],
+ menu[role="list"] {
+   list-style: none;
+ }
+
+ /* Set core root defaults */
+ html:focus-within {
+   scroll-behavior: smooth;
+ }
+
+ // Define main colors
+ :root {
+   --header-height: 7.5rem;
+   --footer-height: 10rem;
+
+   --main-primary-1: #70a9a1;
+   --main-primary-2: #9bc3bd;
+   --main-primary-3: #979797;
+
+   --main-secondary-1: #1a576d;
+   --main-secondary-2: #474747;
+
+   --main-tertiary-1: #0a2934;
+   --main-tertiary-2: #212121;
+
+   // Define accent colors
+   --accent-primary-1: #ebbf70;
+   --accent-primary-2: #9bc3bd;
+   --accent-primary-3: #ffff;
+
+   --accent-secondary-1: #eba370;
+   --accent-secondary-2: #b3b3b3;
+
+   --accent-tertiary-1: #c51e2e;
+   --accent-tertiary-2: #525252;
+ }
+
+ html {
+   font-size: 62.5%;
+ }
+
+ /* Set core body defaults */
+ body {
+   font-size: 1.6rem;
+   color: #404040;
+   line-height: 1.6;
+   background-color: var(--white);
+   min-height: 100vh;
+   text-rendering: optimizeSpeed;
+ }
+
+ /* A elements that don't have a class get default styles */
+ a:not([class]) {
+   text-decoration-skip-ink: auto;
+ }
+
+ /* Make images easier to work with */
+ img,
+ picture {
+   max-width: 100%;
+   display: block;
+ }
+
+ /* Inherit fonts for inputs and buttons */
+ input,
+ button,
+ textarea,
+ select {
+   font: inherit;
+ }
+
+ .layout-grid {
+   display: grid;
+   grid-template-rows: var(--headerHeight) auto auto;
+ }
+
+ .base-grid {
+   display: grid;
+
+   grid-template-columns:
+     minmax(1.6rem, 1fr) repeat(6, minmax(3rem, 12rem)) minmax(1.6rem, 1fr);
+
+   @media (min-width: 900px) {
+     grid-template-columns:
+       minmax(14.1rem, 1fr) repeat(12, minmax(5rem, 12.5rem)) minmax(14.1rem, 1fr);
+   }
+ }
+
+ .sub-grid {
+   display: grid;
+   grid-template-columns: subgrid;
+ }
+
+ .btn {
+   display: inline-block;
+   padding: 0.5rem 1rem;
+   margin: 0.5rem 0;
+   border: 0.1rem solid var(--main-primary-1);
+   border-radius: 0.5rem;
+   background-color: var(--main-primary-1);
+   color: var(--white);
+   font-size: 1rem;
+   font-weight: 700;
+   text-align: center;
+   text-decoration: none;
+   cursor: pointer;
+   transition: all 0.3s ease-in-out;
+
+   &:hover,
+   &:focus {
+     background-color: var(--main-primary-2);
+     border-color: var(--main-primary-2);
+   }
+ }
+
+ /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+ @media (prefers-reduced-motion: reduce) {
+   html:focus-within {
+     scroll-behavior: auto;
+   }
+
+   *,
+   *::before,
+   *::after {
+     animation-duration: 0.01ms !important;
+     animation-iteration-count: 1 !important;
+     transition-duration: 0.01ms !important;
+     scroll-behavior: auto !important;
+   }
+ }
