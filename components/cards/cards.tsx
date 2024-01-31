@@ -21,9 +21,9 @@ export function Card({ kind, title, description, link, image }: CardsProps) {
     <div className={clsx(styles.root)}>
       <h3>{title}</h3>
       <p>{description}</p>
-      <div className={styles.image_box}>
+      <figure className={styles.image_box}>
         <img src={image.url} alt={image.alt} width={300} height={300} />
-      </div>
+      </figure>
       <Link href={link.href}>
         <span>{link.label}</span>
       </Link>

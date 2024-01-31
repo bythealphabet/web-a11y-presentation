@@ -1,7 +1,7 @@
 .root {
   display: grid;
   grid-template-columns: 1.6rem repeat(6, minmax(3rem, 12rem)) 1.6rem;
-  grid-template-rows: 16rem 10rem minmax(6.6rem, 10rem);
+  grid-template-rows: 16rem minmax(6rem, auto) minmax(6rem, auto) 2.4rem;
   gap: .5rem;
   border: solid 1px blue;
 
@@ -19,6 +19,7 @@
 
   p {
     grid-row: 3;
+    align-self: center;
   }
 
   .image_box {
@@ -47,23 +48,4 @@
       border: 0;
     }
   }
-
-  // .image_box {
-  //   display: flex;
-  //   width: var(--card-width);
-  //   height: var(--card-height);
-
-  //   grid-column: 1 / -1;
-  //   grid-row: 1 / -1;
-
-  //   border: solid 1px salmon;
-  //   background: rgba(0, 100, 0, 0.3) !important;
-
-  //   img {
-  //     object-fit: cover;
-  //     display: none;
-  //   }
-  // }
-
-
 }
