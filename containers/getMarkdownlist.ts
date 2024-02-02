@@ -12,7 +12,6 @@ export async function getArticlesData() {
 
     for (const file of files) {
       if (path.extname(file) === ".md") {
-        // Assuming markdownToIPresentation function returns the data structure you need
         const articleData = await markdownToIPresentation(
           "markdown-articles/" + file
         );

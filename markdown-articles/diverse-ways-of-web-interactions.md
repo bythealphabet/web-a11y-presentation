@@ -1,57 +1,11 @@
-# Introduction to Web accessibility
+# Diverse Ways of Web Interaction
 
-![a team of developers consisting of 3 people one of them is a person on a wheel chair that has a to prosthetic arms ](../public/markdown-images/group-looking-to-pc.jpg "a team of developers consisting of 3 people one of them is a person on a wheel chair that has a to prosthetic arms")
+![Stephen William Hawking was an English theoretical physicist, cosmologist, and author sitting in his wheel chair with accessible technology in front of a class blackboard, the black board has some mathematical notations](../public/markdown-images/professor-stephen-hawking.avif "Stephen William Hawking was an English theoretical physicist, cosmologist, and author sitting in his wheel chair with accessible technology in front of a class blackboard, the black board has some mathematical notations")
 
-This article explores the importance of web accessibility, covering its definition, impact on society, and the benefits of creating accessible web experiences. It also delves into diverse ways of web interaction, common disabilities and, assistive technologies.
+With the use of accessible technology, Stephen Hawking was able to interact with the world and share his knowledge with the world. How does others with disabilities interact with the web?
+By understanding the different ways people interact with the web, we can build a better web for everyone.
 
-## What is Accessibility
-
-Web Accessibility is the practice of ensuring that websites are usable by people of all abilities and disabilities. It is a broad topic that covers a wide range of disabilities, including visual, auditory, physical, speech, cognitive, language, learning, and neurological disabilities.
-
-Approximately 15% of the world's population has some form of disability. And they use the web using a variety of assistive technologies, such as screen readers, screen magnifiers, speech recognition software, alternative input devices, and more.
-
-Society often overlooks people with disabilities, but the costs of an inaccessible web are significant for everyone. Consider the impact on individuals who may not have disabilities themselves but are connected to someone who does. Inaccessible websites can hinder opportunities in employment, education, and access to vital information (e.g., during the Covid-19 pandemic).
-
-**The cost of an inaccessible web is significant for everyone.**
-Most of us will experience some form of disability at some point in our lives. For example, we may have a temporary disability, such as a broken arm, or a permanent disability, such as a visual impairment. As we age, we may experience age-related disabilities, such as arthritis or hearing loss. And as we grow older, we may experience cognitive disabilities, such as memory loss. Even a father holding a baby in one arm while using a mobile phone with the other trying to book a medical appointment is a form of temporary disability.
-
-In the context of Dotcontrol, we can be Accessibility Heroes by having a good understanding of the Web Accessibility. And so doing our best to create digital products that everyone use and enjoy, including people with disabilities, can use and contribute to the Web.
-
-## Benefits of an Accessible Web
-
-- **Civil Rights:** Recognizing and honoring the rights of all individuals, regardless of abilities.
-- **Legal Compliance:** Many regions have laws mandating web accessibility, making it a legal requirement for website owners.
-- **Business Advantages:** Accessible websites can attract a broader audience, including people with disabilities, enhancing business potential.
-- **Professional Pride:** Web developers, content creators, and designers can take pride in creating inclusive and accessible web experiences.
-
-### Overlapping Areas
-
-**SEO Benefits:**
-Websites with good semantic structure are more easily crawled by search engine bots, improving SEO.
-
-**Web Performance:**
-Faster loading pages not only make the website more "accessible" for people in remote areas but also enhance the experience for screen reader users. A slow or unresponsive website can significantly degrade the user experience for those relying on screen readers. For a practical understanding, watch this video demonstrating a screen reader navigating CNN's page: [Screen Reader Demo on CNN](https://youtu.be/EnmWUj4XKGg)
-
-**Security:**
-Inaccessible user interfaces can be a security issue. Think of a blind person not being able to log into a form or use an ATM without help. It would be an insecure practice to have to share your PIN or other personal details with someone else. When we make user interfaces accessible to people with disabilities, we don't force them to make a choice between access and security.
-
-**Customer & Business Growth:**
-The more accessible your site is, the more customers you could have! The more accessible your app is, the more contracts you could win that have accessibility as a requirement (e.g. government procurement, education software, banking software, etc.).
-
-Accessibility is often left out of a Minimum Viable Product which has the unfortunate effect of blocking people with disabilities from being early adopters. It's a real shame, since accessibility is easiest when you start from the beginning and don't immediately accrue design and development debt.
-
-User research with people with disabilities could highlight product opportunities and new customer segments that your organization would otherwise miss. Don't sleep on accessibility as part of your MVP!
-
-## Diverse Ways of Web Interaction
-
-Users interact with the web in various ways. Some prefer traditional methods like a mouse, while others rely on alternative interfaces such as keyboards, single switches, head wands, or mouth sticks. Screen readers are also commonly used.
-
-The approach to web accessibility is evolving. Instead of creating separate, off-screen interactions for users with disabilities, the goal is now to develop universally accessible applications. This inclusive design allows users with disabilities to engage with the same content as everyone else, using assistive technologies.
-
-**Privacy Concerns:**
-People with disabilities have expressed concerns about being tracked online. The fear is that marking out users of assistive technologies could lead to segregated, lower-quality web experiences. Marco Zehe, an accessibility engineer and advocate at Mozilla, emphasizes the importance of anonymous web navigation for blind and visually impaired users.
-
-## Living Life with Disabilities
+### Living Life with Disabilities
 
 In order for us to start applying accessibility in our daily work, we need to understand the different types of disabilities and how people with disabilities use the web.
 
@@ -72,8 +26,6 @@ Disabilities can be temporary or lifelong. People may have more than one disabil
 **Important Points to take into account:**
 We should also be aware, of the fact that most assistive technologies are not free. and so many times people with disabilities do not updated them as often as they should. This is why it is important to make sure that the website is accessible using older versions of assistive technologies.
 At the same time it is risky for users with disabilities to switching to a newer version and losing there settings, and not being able to fix issues without assistance.
-
-## Assistive Technologies
 
 ### Screen Readers
 

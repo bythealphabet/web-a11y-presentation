@@ -16,7 +16,7 @@ async function Presentations() {
   const allArticles = await getArticlesData().then((articles) => {
     return articles;
   });
-  console.log("allArticles", allArticles);
+  console.log("allArticles", allArticles[0].topics);
 
   return (
     <main className={clsx("sub-grid", styles.root)}>
