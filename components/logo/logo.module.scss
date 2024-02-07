@@ -1,0 +1,35 @@
+.logowrapper {
+  width: 4.7rem;
+  height: 4.1rem;
+  display: block;
+  z-index: 20;
+
+  grid-column: 2;
+  align-self: center;
+
+  @media screen and (min-width: 48em) {
+    left: 4rem;
+    top: 4rem;
+  }
+
+  @media screen and (min-width: 62em) {
+    left: 2.5rem;
+    top: 2.5rem;
+  }
+
+  .logo {
+    cursor: pointer;
+    text-shadow: 0 0 1rem rgba(0, 0, 0, 0.25);
+    fill: #ffffff;
+
+    transition: text-shadow 0.3s ease-in-out, fill 0.3s ease-in-out;
+
+    .transition--light & {
+      fill: #000000;
+    }
+
+    .logo--active & {
+      fill: #ffffff;
+    }
+  }
+}
