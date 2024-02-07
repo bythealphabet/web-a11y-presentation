@@ -1,155 +1,224 @@
- /* Box sizing rules */
- *,
- *::before,
- *::after {
-   margin: 0;
-   padding: 0;
-   box-sizing: border-box;
- }
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
- /* Remove default margin */
- body,
- h1,
- h2,
- h3,
- h4,
- p,
- figure,
- blockquote,
- dl,
- dd {
-   margin-block-end: 0;
- }
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
 
- /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
- ul[role="list"],
- ol[role="list"],
- menu[role="list"] {
-   list-style: none;
- }
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"],
+menu[role="list"] {
+  list-style: none;
+}
 
- /* Set core root defaults */
- html:focus-within {
-   scroll-behavior: smooth;
- }
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
 
- // Define main colors
- :root {
-   --header-height: 7.5rem;
-   --footer-height: 10rem;
+// Define main colors
+:root {
+  --header-height: 7.5rem;
+  --footer-height: 10rem;
 
-   --main-primary-1: #70a9a1;
-   --main-primary-2: #9bc3bd;
-   --main-primary-3: #979797;
+  --color-white: #fff;
+  --color-off-white: #efefef;
+  --color-black: #0d0d0d;
+  --color-primary: #ff2345;
+  --color-gray: #cacaca;
+  --color-blue: #2345ff;
+  --color-gray-dark: #171717;
+  --color-gray-medium: #737373;
+  --color-gray-light: #f0f0f0;
+  --color-gold: #b48f37;
 
-   --main-secondary-1: #1a576d;
-   --main-secondary-2: #474747;
+  // Themes color
+  --color-mars: #f24e00;
+  --color-havi-green: #00e67c;
+  --color-havi-blue: #036fd2;
+  --color-havi-gradient: #00b7a9;
+  --color-yeaz-light-blue: #3b5fe1;
+  --color-yeaz-dark-blue: #304eb9;
+  --color-persgroep: #cc0f1e;
+  --color-brand-new-day: #f3f536;
+  --color-bnd-blue: #45d4d8;
+  --color-bnd-green: #90e27c;
+  --natgeo-yellow: #ffdc00;
+  --color-apg-primary: #2e318f;
+  --color-apg-secondary: #d2646f;
+  --color-apg-tertiary: #f2f0eb;
+  --color-strukton-primary: #e53527;
+  --color-dura-vermeer-primary: #095b50;
+  --color-pcp-pink: #ff91fe;
+  --color-source-up-green: #81a44c;
+  --color-smint-landing-primary: #6d6d6d;
+  --color-smint-landing-blue: #1e28b0;
+  --color-smint-blue: #070787;
+  --color-smint-light-blue: #0a0bc8;
+  --color-smint-video-blue: #0bd1ec;
+  --color-nbb-primary: #fd0;
+  --color-nbb-top-section: #282937;
+  --color-nbb-blue-section: #4a27ff;
+  --color-nbb-pink-section: #ffb0e0;
+  --color-nbb-yellow-section: #ffd801;
+  --color-nbb-collab-section: #272936;
+  --color-profuomo-quote-section: #f8f7f6;
+  --color-profuomo-quote-section-text: #8b8b8b;
+  --color-profuomo-strategy-section-text: #737373;
+  --color-profuomo-stdc-bar-background: #ebebeb;
+  // Shadow colors
+  --color-primary-shadow: rgba(var(--color-primary), 0.2);
+  --color-secondary-shadow: rgba(var(--color-black), 0.6);
+  --color-tertiary-shadow: rgba(var(--color-black), 0);
 
-   --main-tertiary-1: #0a2934;
-   --main-tertiary-2: #212121;
+  --color-half-blue-gradient: rgba(90, 176, 255, 0.6);
+  --color-grey-blue-gradient: rgba(108, 184, 255, 0.6);
+  --color-low-opacity-black-gradient: rgba(13, 13, 13, 0.1);
 
-   // Define accent colors
-   --accent-primary-1: #ebbf70;
-   --accent-primary-2: #9bc3bd;
-   --accent-primary-3: #ffff;
+  --color-low-opacity-white-gradient: rgba(255, 255, 255, 0.4);
 
-   --accent-secondary-1: #eba370;
-   --accent-secondary-2: #b3b3b3;
+  --column-count: 12;
+  --column-selector: .col; /* This won't work directly in CSS */
+  --offset-modifier: offset; /* This won't work directly in CSS */
+  --side-menu-width: 7rem;
+  --main-height-offset: 7rem;
+  --wrapper-width: 122rem;
+  --gutter-width: 2rem;
+  --outer-margin: 2rem;
+  --gutter-compensation: calc(var(--gutter-width) * 0.5 * -1);
+  --half-gutter-width: calc(var(--gutter-width) * 0.5);
 
-   --accent-tertiary-1: #c51e2e;
-   --accent-tertiary-2: #525252;
- }
+  /* Widths */
+  --width-xs: 30em; /* Assuming conversion to em is direct */
+  --width-sm: 48em;
+  --width-md: 62em;
+  --width-lg: 75em;
+  --width-xlg: 90em;
+  --width-xxlg: 100em;
+  --width-nav-xlg: 85em;
 
- html {
-   font-size: 62.5%;
- }
+  /* Container Widths */
+  --container-sm: calc(48rem + var(--gutter-width));
+  --container-md: calc(62rem + var(--gutter-width));
+  --container-lg: calc(75rem + var(--gutter-wid));
+}
 
- /* Set core body defaults */
- body {
-   font-size: 1.6rem;
-   color: #404040;
-   line-height: 1.6;
-   background-color: var(--white);
-   min-height: 100vh;
-   text-rendering: optimizeSpeed;
- }
+html {
+  font-size: 62.5%;
+}
 
- /* A elements that don't have a class get default styles */
- a:not([class]) {
-   text-decoration-skip-ink: auto;
- }
+/* Set core body defaults */
+body {
+  font-size: 1.6rem;
+  color: #404040;
+  line-height: 1.6;
+  background-color: var(--color-black);
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
 
- /* Make images easier to work with */
- img,
- picture {
-   max-width: 100%;
-   display: block;
- }
+.root-page {
+  // overflow-x: hidden;
+  // position: relative;
+  // height: 100%;
+}
 
- /* Inherit fonts for inputs and buttons */
- input,
- button,
- textarea,
- select {
-   font: inherit;
- }
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
 
- .layout-grid {
-   display: grid;
-   grid-template-rows: var(--headerHeight) auto auto;
- }
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
 
- .base-grid {
-   display: grid;
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
 
-   grid-template-columns:
-     minmax(1.6rem, 1fr) repeat(6, minmax(3rem, 12rem)) minmax(1.6rem, 1fr);
+.layout-grid {
+  display: grid;
+  grid-template-rows: var(--headerHeight) auto auto;
+}
 
-   @media (min-width: 900px) {
-     grid-template-columns:
-       minmax(14.1rem, 1fr) repeat(12, minmax(5rem, 12.5rem)) minmax(14.1rem, 1fr);
-   }
- }
+.base-grid {
+  display: grid;
 
- .sub-grid {
-   display: grid;
-   grid-template-columns: subgrid;
- }
+  grid-template-columns: minmax(1.6rem, 1fr) repeat(6, minmax(3rem, 12rem)) minmax(
+      1.6rem,
+      1fr
+    );
 
- .btn {
-   display: inline-block;
-   padding: 0.5rem 1rem;
-   margin: 0.5rem 0;
-   border: 0.1rem solid var(--main-primary-1);
-   border-radius: 0.5rem;
-   background-color: var(--main-primary-1);
-   color: var(--white);
-   font-size: 1rem;
-   font-weight: 700;
-   text-align: center;
-   text-decoration: none;
-   cursor: pointer;
-   transition: all 0.3s ease-in-out;
+  @media (min-width: 900px) {
+    grid-template-columns:
+      minmax(2.4rem, 1fr) repeat(12, minmax(5rem, 12.5rem))
+      minmax(2.4rem, 1fr);
+  }
+}
 
-   &:hover,
-   &:focus {
-     background-color: var(--main-primary-2);
-     border-color: var(--main-primary-2);
-   }
- }
+.sub-grid {
+  display: grid;
+  grid-template-columns: subgrid;
+}
 
- /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
- @media (prefers-reduced-motion: reduce) {
-   html:focus-within {
-     scroll-behavior: auto;
-   }
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  border: 0.1rem solid var(--main-primary-1);
+  border-radius: 0.5rem;
+  background-color: var(--main-primary-1);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 
-   *,
-   *::before,
-   *::after {
-     animation-duration: 0.01ms !important;
-     animation-iteration-count: 1 !important;
-     transition-duration: 0.01ms !important;
-     scroll-behavior: auto !important;
-   }
- }
+  &:hover,
+  &:focus {
+    background-color: var(--main-primary-2);
+    border-color: var(--main-primary-2);
+  }
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
