@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.scss";
 import { fonts } from "./fonts";
-import { Providers } from "./providers";
+// import { Providers } from "./providers";
+import Header from "@/containers/header/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={fonts.rubik.variable}>
       <body>
-        <Providers>
-          <div className="base-grid">{children}</div>
-        </Providers>
+        <div className="base-grid root-page">
+          <Header model={{}} />
+          {children}
+        </div>
       </body>
     </html>
   );
