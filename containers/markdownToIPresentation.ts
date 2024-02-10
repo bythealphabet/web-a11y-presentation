@@ -7,7 +7,7 @@ export async function markdownToIPresentation(
   filePath: string
 ): Promise<IPresentations> {
   const markdown = await fs.readFile(
-    path.join(process.cwd(), filePath),
+    path.join(process.cwd(), "markdown-articles/" + filePath),
     "utf-8"
   );
 
@@ -19,7 +19,6 @@ export async function markdownToIPresentation(
 
   const renderer = {
     image(href: string, title: any, text: string) {
-      //Todo: The docs say title is a string, when making it a string, it breaks the code, therefore, it's any, but it should be string, make sure to fix this in the future.
       const modifiedHref = href.replace(/\.\.\/public\//, "");
 
       image = {
@@ -42,7 +41,7 @@ export async function markdownToIPresentation(
     title: "",
     description: "",
     link: {
-      href: filePath,
+      href: `presentations/${filePath}`,
       label: path.basename(filePath, ".md"),
     },
     image: {

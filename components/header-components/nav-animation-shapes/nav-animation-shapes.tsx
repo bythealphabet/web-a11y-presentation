@@ -13,7 +13,7 @@ function NavAnimationShapes({ active }: NavAnimationShapesProps) {
   const animations = [
     usePathsAnimation({ delay: 0, resetShape: true, opacity: [1, 0] }),
     usePathsAnimation({ delay: 100, resetShape: true, opacity: [1, 0] }),
-    usePathsAnimation({ delay: 100, resetShape: false }),
+    // usePathsAnimation({ delay: 100, resetShape: false }),
   ];
 
   useEffect(() => {
@@ -43,7 +43,7 @@ function NavAnimationShapes({ active }: NavAnimationShapesProps) {
               [navAnimStyles.shapes__reverse_shape]: !active,
             })}
             d={path}
-            fill={index === 2 && active ? "url(#MenuGradient)" : undefined}
+            fill={index === 2 && active ? "url(#MenuGradient)" : "transparent"}
           ></path>
         ))}
         <defs>

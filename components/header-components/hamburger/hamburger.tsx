@@ -3,10 +3,10 @@ import hamburgerStyles from "./hamburger.module.scss";
 
 interface HamburgerProps {
   active: boolean;
-  setActive: (active: boolean) => void;
+  handleMenuClick: () => void;
 }
 
-function Hamburger({ active, setActive }: HamburgerProps) {
+function Hamburger({ active, handleMenuClick }: HamburgerProps) {
   return (
     <button
       className={clsx(hamburgerStyles.hamburgerMenu, {
@@ -14,7 +14,7 @@ function Hamburger({ active, setActive }: HamburgerProps) {
       })}
       aria-expanded="false"
       aria-controls="main-menu"
-      onClick={() => setActive(!active)}
+      onClick={() => handleMenuClick()}
     >
       <span className={hamburgerStyles.hamburgerLineWrapper}>
         <span className={hamburgerStyles.hamburgerLine}></span>

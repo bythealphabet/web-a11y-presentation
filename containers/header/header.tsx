@@ -6,15 +6,66 @@ import clsx from "clsx";
 import Logo from "@/components/logo/logo";
 import Hamburger from "@/components/header-components/hamburger/hamburger";
 import NavAnimationShapes from "@/components/header-components/nav-animation-shapes/nav-animation-shapes";
+import useAnime from "@/hooks/useAnime";
+
+const navigationLinks = [
+  {
+    name: "Home",
+    url: "/",
+    main: true,
+  },
+  {
+    name: "About",
+    url: "/about",
+    main: true,
+  },
+  {
+    name: "Services",
+    url: "/web-a11y-services",
+    main: true,
+  },
+  {
+    name: "Cases",
+    url: "/web-a11y-cases",
+    main: true,
+  },
+  {
+    name: "Articles",
+    url: "/web-a11y-articles",
+  },
+  {
+    name: "Web a11y Slides",
+    url: "/web-a11y-slides",
+  },
+  {
+    name: "Web a11y Resources",
+    url: "/web-a11y-resources",
+  },
+  {
+    name: "Web a11y Tools",
+    url: "/web-a11y-tools",
+  },
+  {
+    name: "Web a11y Videos",
+    url: "/web-a11y-videos",
+  },
+];
 
 const Header = ({ model }) => {
   const [homePageUrl, setHomePageUrl] = useState("");
   const [currentPage, setCurrentPage] = useState(null);
   const [active, setActive] = useState(false);
+  const showStyles = true;
 
-  const handelNavAnimation = () => {
-    return "open";
-  };
+  const { animeRef } = useAnime({
+    targets: ".menu",
+    translateX: ["100%", "0%"],
+    opacity: [0, 1],
+    easing: "easeInOutQuad",
+    duration: 900,
+    delay: 300,
+    autoplay: false,
+  });
 
   //   useEffect(() => {
   //     // Assuming getContentService and getCurrentPage are functions that fetch the necessary data
@@ -33,61 +84,45 @@ const Header = ({ model }) => {
   //     fetchCurrentPage();
   //   }, []);
 
+  function handleMenuClick() {
+    console.log("handleMenuClick", active);
+
+    if (animeRef.current && !active) {
+      animeRef.current.play();
+    }
+
+    setActive(!active);
+  }
+
   return (
-    <header className={clsx("sub-grid", styles.root)}>
+    <header className={clsx(showStyles && "sub-grid", styles.root)}>
       <Logo />
-      <Hamburger active={active} setActive={setActive} />
-      <nav role="navigation" aria-label="Main menu">
-        <div className="nav" id="main-menu">
-          <div className="nav__wrap">
-            <div className="nav__menu-wrap">
-              {model.hasLeftColumnLinks && (
-                <ul className="nav__list nav__list--left">
-                  {model.leftColumnLinks.map(
-                    (link, index) =>
-                      link.url && (
-                        <li key={index} className="nav__link">
-                          <Link
-                            href={link.url}
-                            target={link.target}
-                            className="gtm-navigation__link"
-                          >
-                            {link.name}
-                          </Link>
-                        </li>
-                      )
-                  )}
-                </ul>
-              )}
+      {showStyles && (
+        <Hamburger active={active} handleMenuClick={handleMenuClick} />
+      )}
 
-              {model.hasRightColumnLinks && (
-                <ul className="nav__list nav__list--right">
-                  {model.rightColumnLinks.map(
-                    (link, index) =>
-                      link.url && (
-                        <li key={index} className="nav__link--small">
-                          <Link
-                            href={link.url}
-                            target={link.target}
-                            className="gtm-navigation__link"
-                          >
-                            {link.name}
-                          </Link>
-                        </li>
-                      )
-                  )}
-                </ul>
-              )}
-            </div>
+      <div
+        className={clsx(
+          showStyles && styles.menu,
+          showStyles && "base-grid",
+          showStyles && "menu"
+        )}
+      >
+        {/* <nav
+          className={clsx(showStyles && "sub-grid")}
+          role="navigation"
+          aria-label="Main menu"
+        >
+          <ul role="list">
+            {navigationLinks.map((link, index) => (
+              <li key={index}>
+                <Link href={link.url}>{link.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav> */}
+      </div>
 
-            {currentPage && (
-              <div className="nav__footer footer">
-                {/* NavFooterViewComponent equivalent for React */}
-              </div>
-            )}
-          </div>
-        </div>
-      </nav>
       <NavAnimationShapes active={active} />
     </header>
   );

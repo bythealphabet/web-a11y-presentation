@@ -1,11 +1,14 @@
 import Link from "next/link";
+import clsx from 'clsx';
 import logoStyles from "./logo.module.scss";
 
 function Logo() {
+  const showStyles = true;
+
   return (
-    <Link href="/" className={logoStyles.logowrapper}>
+    <Link href="/" className={clsx(showStyles && logoStyles.logowrapper)}>
       <svg
-        className={logoStyles.logo}
+        className={clsx(showStyles && logoStyles.logo)}
         role="img"
         width="47"
         height="41"
@@ -18,7 +21,7 @@ function Logo() {
           fill="#FF2345"
         />
         <path
-          className={logoStyles.logo}
+          className={clsx(showStyles && logoStyles.logo)}
           d="M36.015 56.579h9.79V52.42h-5.61l-.007-12.309h-4.167l-.006 16.467zM40.846 17.136h4.174V4.82h5.227V.669H35.996v4.152h4.85v12.315zM8.566 36.883a8.72 8.72 0 006.165-2.728l.274-.273-2.917-2.944-.28.28a4.884 4.884 0 01-3.242 1.507 4.182 4.182 0 01-3.202-1.06A4.153 4.153 0 014 28.592a4.138 4.138 0 011.365-3.073 4.172 4.172 0 013.202-1.06 4.662 4.662 0 013.235 1.52l.281.293 2.923-2.963-.274-.28a8.705 8.705 0 00-6.165-2.746 8.364 8.364 0 00-6.043 2.348A8.302 8.302 0 000 28.583a8.276 8.276 0 002.523 5.952 8.34 8.34 0 006.043 2.348zM40.195 28.198v8.83H36.02V20.424h3.804l5.948 8.85V20.55h18.61v4.03h-5.17l-.006 12.296h-4.168V24.581h-5.118v12.295h-3.759l-5.967-8.678zM6.6 17.091H2.041V.421H6.3c3.032 0 5.502.496 7.397 3.11a8.788 8.788 0 011.538 5.155c0 5.5-3.14 8.405-8.635 8.405zm.733-12.932H6.02v9.194h1.276c2.916 0 4.09-1.87 4.09-4.571 0-2.703-1.199-4.623-4.052-4.623zM8.546 51.334H5.961v5.404H1.96V40.106h6.382c4.2 0 6.497 2.257 6.497 5.677 0 2.404-1.136 3.917-2.598 4.603l3.37 6.358h-4.353l-2.712-5.41zm.185-3.446c1.277 0 2.03-.68 2.03-1.838 0-1.443-.747-2.288-2.03-2.288h-2.77v4.126h2.77z"
           fill="none"
         />
@@ -26,5 +29,4 @@ function Logo() {
     </Link>
   );
 }
-
 export default Logo;
