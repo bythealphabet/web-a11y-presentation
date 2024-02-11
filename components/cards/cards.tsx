@@ -18,15 +18,24 @@ export interface CardsProps {
 
 export function Card({ kind, title, description, link, image }: CardsProps) {
   return (
-    <div className={clsx(styles.root)}>
+    <>
       <h3>{title}</h3>
       <p>{description}</p>
-      <figure className={styles.image_box}>
-        <img src={image?.url} alt={image?.alt} width={300} height={300} />
+      <figure>
+        {image?.url && (
+          <img
+            src={`/${image?.url}`}
+            alt={image?.alt}
+            width={300}
+            height={300}
+          />
+        )}
       </figure>
-      <Link href={link?.href}>
-        <span>{link?.label}</span>
-      </Link>
-    </div>
+      {link && (
+        <Link href={link?.href}>
+          <span>{link?.label}</span>
+        </Link>
+      )}
+    </>
   );
 }

@@ -1,0 +1,98 @@
+.hamburgerMenu {
+  // removing buttons default styles
+  z-index: 20;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  // giving the button a bigger click area
+  padding: 0.7rem 1.2rem;
+  padding-right: 0;
+
+  //position on the header grid
+  grid-column: -3;
+  align-self: center;
+  justify-self: end;
+
+  .hamburgerLineWrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.4rem;
+
+    .hamburgerLine {
+      background-color: var(--color-white);
+      width: 2.5rem;
+      height: 0.2em;
+      display: inline-block;
+
+      &:nth-child(1) {
+        // transition: transform 0.25s 0.25s ease, top 0.25s 0.5s ease,
+        //   background-color 0.3s ease-in-out;
+      }
+
+      &:nth-child(2) {
+        // transition: transform 0.3s 0.8s ease, background-color 0.3s ease-in-out;
+      }
+
+      &:nth-child(3) {
+        // transition: transform 0.25s 0.25s ease, top 0.25s 0.5s ease,
+        //   background-color 0.3s ease-in-out;
+      }
+    }
+  }
+
+  &--expanded {
+    .hamburgerLine {
+      &:nth-child(1) {
+        transform: translateY(0.7rem);
+      }
+
+      &:nth-child(2) {
+        transform: translateX(100%);
+      }
+
+      &:nth-child(3) {
+        transform: translateY(-0.7rem);
+      }
+    }
+  }
+}
+
+@keyframes moveAndFade {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes moveToCenter {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, 50%, 0);
+  }
+  100% {
+    transform: translate3d(0, 50%, 0) rotate(45deg);
+  }
+}
+
+@keyframes moveToCenterAndRotate {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -50%, 0);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0) rotate(-45deg);
+  }
+}

@@ -12,9 +12,7 @@ export async function getArticlesData() {
 
     for (const file of files) {
       if (path.extname(file) === ".md") {
-        const articleData = await markdownToIPresentation(
-          "markdown-articles/" + file
-        );
+        const articleData = await markdownToIPresentation(file);
 
         articlesData.push(articleData);
       }

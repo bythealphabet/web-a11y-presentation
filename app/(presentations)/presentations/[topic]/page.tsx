@@ -1,47 +1,39 @@
 import clsx from "clsx";
 import { CardsProps, Card } from "@/components/cards/cards";
-import styles from "./presentation.module.scss";
+import styles from "./topic.module.scss";
+import { markdownToIPresentation } from "@/containers/markdownToIPresentation";
+import Pptgenerator from "@/components/pptgenerator/pptgenerator";
+import Slide from "@/components/slides/slide";
 
-const dummyData: CardsProps[] = [
-  {
-    kind: "slide",
-    title: "Card 1",
-    description: "This is the description for card 1.",
-    link: {
-      href: "https://example.com/card1",
-      label: "Read more",
-    },
-    image: {
-      url: "https://example.com/card1.jpg",
-      alt: "Card 1 Image",
-    },
-  },
-  {
-    kind: "slide",
-    title: "Card 2",
-    description: "This is the description for card 2.",
-    link: {
-      href: "https://example.com/card2",
-      label: "Read more",
-    },
-    image: {
-      url: "https://example.com/card2.jpg",
-      alt: "Card 2 Image",
-    },
-  },
-];
-
-function WebA11ySlides({ params }) {
+async function WebA11ySlides({ params }) {
+  const article = await markdownToIPresentation(params.topic);
   return (
-    <main className={clsx(styles.root)}>
-      <h1>{params.presentation}</h1>
-      <ul role="list">
-        {dummyData.map((card, index) => (
-          <li key={index}>
-            <Card {...card} />
-          </li>
-        ))}
-      </ul>
+    <main className={clsx(styles.root, "sub-grid")}>
+      <section className={clsx(styles.mainSection, "sub-grid")}>
+        <h1>{article.title}</h1>
+        <p>{article.description}</p>
+
+        <h2>Topics</h2>
+        <ul role="list">
+          {article.topics.map((card, index) => {
+            return (
+              <li key={index}>
+                <Card
+                  kind="slide"
+                  title={card.title}
+                  link={card.link}
+                  description={card.content}
+                  image={card.image}
+                />
+              </li>
+            );
+          })}
+        </ul>
+        <img src={`/${article.image.url}`} alt={article.image.alt} />
+      </section>
+      <Pptgenerator article={article}>
+        <Slide article={article} />
+      </Pptgenerator>
     </main>
   );
 }

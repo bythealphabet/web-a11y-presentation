@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.scss";
 import { fonts } from "./fonts";
 // import { Providers } from "./providers";
 import Header from "@/containers/header/header";
-
-const inter = Inter({ subsets: ["latin"] });
+import clsx from "clsx";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,10 +15,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const showStyles = true;
   return (
     <html lang="en" className={fonts.rubik.variable}>
       <body>
-        <div className="base-grid root-page">
+        <div className={clsx({ ["base-grid root-page"]: showStyles })}>
           <Header model={{}} />
           {children}
         </div>

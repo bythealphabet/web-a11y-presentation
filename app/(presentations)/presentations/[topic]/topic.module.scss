@@ -1,0 +1,29 @@
+.root {
+  grid-column: 1 / -1;
+  .mainSection {
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    gap: 2rem 0;
+
+    h1 {
+      grid-column: 2 / span 4;
+    }
+
+    p {
+      grid-column: 2 / span 4;
+    }
+
+    h2 {
+      grid-column: 2 / span 4;
+    }
+
+    ul {
+      grid-column: 2 / -2;
+    }
+
+    img {
+      grid-column: 6 / span 3;
+      grid-row: 1 / span 3;
+    }
+  }
+}
