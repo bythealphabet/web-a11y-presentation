@@ -10,14 +10,12 @@ type PathState = {
 
 interface UsePathsAnimationProps {
   customPath?: string;
-  delay: number;
   opacity?: number | number[];
   resetShape?: boolean;
 }
 
 export function usePathsAnimation({
   customPath,
-  delay,
   opacity,
   resetShape,
 }: UsePathsAnimationProps) {
@@ -27,20 +25,24 @@ export function usePathsAnimation({
     CurveEndPointY: 0,
     CurveLineEndPointY: 0,
   });
+  const [open, setOpen] = useState(false);
+  const [delay, setDelay] = useState(0);
+  let initial = open ? 0 : 100;
+  let open0 = open ? 100 : 0;
 
-  const firstCurveAnimation = { c1: 0, c2: 0 };
-  const secondDelayedCurveAnimation = { c3: 0, c4: 0 };
+  const firstCurveAnimation = { c1: open0, c2: open0 };
+  const secondDelayedCurveAnimation = { c3: open0, c4: open0 };
 
   const baseAnime = {
     targets: [firstCurveAnimation, secondDelayedCurveAnimation],
-    c1: 100,
-    c2: 100,
-    c3: 100,
-    c4: 100,
+    c1: initial,
+    c2: initial,
+    c3: initial,
+    c4: initial,
     easing: function () {
       return (t: number) => (t < 0.5 ? 4 * t ** 3 : 0.5 * (2 * t - 2) ** 3 + 1);
     },
-    delay: (_: Element, i: number) => delay + (i === 1 ? 100 : 0),
+    delay: (_: Element, i: number) => delay + (i === 1 ? 150 : 0),
     opacity,
     update: () => {
       setPathState({
@@ -76,5 +78,7 @@ export function usePathsAnimation({
     animeRef,
     path,
     ...pathState,
+    setOpen,
+    setDelay,
   };
 }

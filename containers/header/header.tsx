@@ -85,11 +85,9 @@ const Header = ({ model }) => {
   //   }, []);
 
   function handleMenuClick() {
-    console.log("handleMenuClick", active);
-
-    if (animeRef.current && !active) {
-      animeRef.current.play();
-    }
+    // if (animeRef.current && !active) {
+    //   animeRef.current.play();
+    // }
 
     setActive(!active);
   }
@@ -101,14 +99,14 @@ const Header = ({ model }) => {
         <Hamburger active={active} handleMenuClick={handleMenuClick} />
       )}
 
-      <div
+      {/* <div
         className={clsx(
           showStyles && styles.menu,
           showStyles && "base-grid",
           showStyles && "menu"
         )}
       >
-        {/* <nav
+        <nav
           className={clsx(showStyles && "sub-grid")}
           role="navigation"
           aria-label="Main menu"
@@ -120,8 +118,8 @@ const Header = ({ model }) => {
               </li>
             ))}
           </ul>
-        </nav> */}
-      </div>
+        </nav>
+      </div> */}
 
       <NavAnimationShapes active={active} />
     </header>

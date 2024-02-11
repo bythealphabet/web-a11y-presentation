@@ -11,20 +11,56 @@ interface NavAnimationShapesProps {
 function NavAnimationShapes({ active }: NavAnimationShapesProps) {
   const [load, setLoad] = useState(false);
   const animations = [
-    usePathsAnimation({ delay: 0, resetShape: true, opacity: [1, 0] }),
-    usePathsAnimation({ delay: 100, resetShape: true, opacity: [1, 0] }),
-    // usePathsAnimation({ delay: 100, resetShape: false }),
+    usePathsAnimation({ opacity: [1, 0] }),
+    usePathsAnimation({ opacity: [1, 0] }),
+    usePathsAnimation({}),
   ];
 
   useEffect(() => {
     if (!load) {
+      animations.forEach(({ setDelay }, index) => {
+        if (index === 1) {
+          setDelay(200);
+        }
+
+        if (index === 2) {
+          setDelay(200);
+        }
+      });
       setLoad(true);
       return;
     }
 
-    animations.forEach(({ animeRef }) => {
-      if (animeRef.current) {
+    animations.forEach(({ animeRef, setOpen, setDelay }, index) => {
+      if (animeRef.current && active) {
         animeRef.current.play();
+        setOpen(true);
+        if (index === 0) {
+          setDelay(200);
+        }
+
+        if (index === 1) {
+          setDelay(0);
+        }
+
+        if (index === 2) {
+          setDelay(0);
+        }
+      } else if (animeRef.current && !active) {
+        animeRef.current.play();
+        setOpen(false);
+
+        if (index === 0) {
+          setDelay(0);
+        }
+
+        if (index === 1) {
+          setDelay(200);
+        }
+
+        if (index === 2) {
+          setDelay(200);
+        }
       }
     });
   }, [active]);
@@ -43,7 +79,13 @@ function NavAnimationShapes({ active }: NavAnimationShapesProps) {
               [navAnimStyles.shapes__reverse_shape]: !active,
             })}
             d={path}
-            fill={index === 2 && active ? "url(#MenuGradient)" : "transparent"}
+            fill={
+              active
+                ? index === 2
+                  ? "url(#MenuGradient)"
+                  : "transparent"
+                : "transparent"
+            }
           ></path>
         ))}
         <defs>
