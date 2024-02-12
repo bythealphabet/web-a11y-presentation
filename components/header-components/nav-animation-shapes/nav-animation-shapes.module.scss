@@ -19,7 +19,7 @@
     }
 
     &:nth-child(3) {
-      opacity: 0.95;
+      fill: var(--color-gray-dark);
     }
 
     &__reverse_shape {
@@ -27,11 +27,11 @@
       transform: scale(-1);
 
       &:nth-child(1) {
-        fill: var(--color-gray-dark);
+        fill: var(--color-primary);
       }
 
-      &:nth-child(2) {
-        fill: var(--color-primary);
+      &:nth-child(3) {
+        fill: var(--color-gray-dark);
       }
     }
   }

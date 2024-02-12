@@ -79,27 +79,8 @@ function NavAnimationShapes({ active }: NavAnimationShapesProps) {
               [navAnimStyles.shapes__reverse_shape]: !active,
             })}
             d={path}
-            fill={
-              active
-                ? index === 2
-                  ? "url(#MenuGradient)"
-                  : "transparent"
-                : "transparent"
-            }
           ></path>
         ))}
-        <defs>
-          <linearGradient id="MenuGradient" x1="0%" y1="50%" x2="100%" y2="50%">
-            <stop
-              offset="50%"
-              style={{ stopColor: "rgb(13, 13, 13)", stopOpacity: 1.0 }}
-            ></stop>
-            <stop
-              offset="100%"
-              style={{ stopColor: "rgb(255,35,69)", stopOpacity: 1.0 }}
-            ></stop>
-          </linearGradient>
-        </defs>
       </svg>
     </div>
   );
