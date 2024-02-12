@@ -11,20 +11,56 @@ interface NavAnimationShapesProps {
 function NavAnimationShapes({ active }: NavAnimationShapesProps) {
   const [load, setLoad] = useState(false);
   const animations = [
-    usePathsAnimation({ delay: 0, resetShape: true, opacity: [1, 0] }),
-    usePathsAnimation({ delay: 100, resetShape: true, opacity: [1, 0] }),
-    // usePathsAnimation({ delay: 100, resetShape: false }),
+    usePathsAnimation({ opacity: [1, 0] }),
+    usePathsAnimation({ opacity: [1, 0] }),
+    usePathsAnimation({}),
   ];
 
   useEffect(() => {
     if (!load) {
+      animations.forEach(({ setDelay }, index) => {
+        if (index === 1) {
+          setDelay(200);
+        }
+
+        if (index === 2) {
+          setDelay(200);
+        }
+      });
       setLoad(true);
       return;
     }
 
-    animations.forEach(({ animeRef }) => {
-      if (animeRef.current) {
+    animations.forEach(({ animeRef, setOpen, setDelay }, index) => {
+      if (animeRef.current && active) {
         animeRef.current.play();
+        setOpen(true);
+        if (index === 0) {
+          setDelay(200);
+        }
+
+        if (index === 1) {
+          setDelay(0);
+        }
+
+        if (index === 2) {
+          setDelay(0);
+        }
+      } else if (animeRef.current && !active) {
+        animeRef.current.play();
+        setOpen(false);
+
+        if (index === 0) {
+          setDelay(0);
+        }
+
+        if (index === 1) {
+          setDelay(200);
+        }
+
+        if (index === 2) {
+          setDelay(200);
+        }
       }
     });
   }, [active]);
@@ -43,21 +79,8 @@ function NavAnimationShapes({ active }: NavAnimationShapesProps) {
               [navAnimStyles.shapes__reverse_shape]: !active,
             })}
             d={path}
-            fill={index === 2 && active ? "url(#MenuGradient)" : "transparent"}
           ></path>
         ))}
-        <defs>
-          <linearGradient id="MenuGradient" x1="0%" y1="50%" x2="100%" y2="50%">
-            <stop
-              offset="50%"
-              style={{ stopColor: "rgb(13, 13, 13)", stopOpacity: 1.0 }}
-            ></stop>
-            <stop
-              offset="100%"
-              style={{ stopColor: "rgb(255,35,69)", stopOpacity: 1.0 }}
-            ></stop>
-          </linearGradient>
-        </defs>
       </svg>
     </div>
   );

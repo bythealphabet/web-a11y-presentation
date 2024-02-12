@@ -1,5 +1,4 @@
 .root {
-  z-index: 10;
   pointer-events: none;
   position: absolute;
   inset: 0;
@@ -20,12 +19,20 @@
     }
 
     &:nth-child(3) {
-      opacity: 0.15;
+      fill: var(--color-gray-dark);
     }
 
     &__reverse_shape {
       transform-origin: 50% 50%;
-      transform: scaleX(-1);
+      transform: scale(-1);
+
+      &:nth-child(1) {
+        fill: var(--color-primary);
+      }
+
+      &:nth-child(3) {
+        fill: var(--color-gray-dark);
+      }
     }
   }
 }
