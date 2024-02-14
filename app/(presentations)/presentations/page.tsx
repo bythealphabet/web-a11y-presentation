@@ -1,7 +1,7 @@
 import { Card, CardsProps } from "@/components/cards/cards";
 import styles from "./presentation.module.scss";
 import clsx from "clsx";
-import { getArticlesData } from "@/containers/getMarkdownlist";
+import { getArticlesData } from "@/utils/getMarkdownlist";
 
 async function Presentations() {
   const allArticles = await getArticlesData().then((articles) => {

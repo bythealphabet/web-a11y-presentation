@@ -52,43 +52,53 @@ const navigationLinks = [
 ];
 
 const Header = ({ model }) => {
-  const [homePageUrl, setHomePageUrl] = useState("");
-  const [currentPage, setCurrentPage] = useState(null);
   const [active, setActive] = useState(false);
+  const [loading, setLoading] = useState(false);
   const showStyles = true;
 
   const { animeRef } = useAnime({
-    targets: ".menu",
-    translateX: ["100%", "0%"],
+    targets: ".menu-item",
+    translateY: ["100%", "0%"],
     opacity: [0, 1],
-    easing: "easeInOutQuad",
     duration: 900,
-    delay: 300,
+    delay: function (el, i, l) {
+      return 400 + i * 100;
+    },
     autoplay: false,
   });
 
-  //   useEffect(() => {
-  //     // Assuming getContentService and getCurrentPage are functions that fetch the necessary data
-  //     // These functions need to be implemented according to your project's architecture
-  //     const fetchHomePage = async () => {
-  //       const homePage = await getContentService().getHomePageForContent();
-  //       setHomePageUrl(homePage?.url);
-  //     };
+  const { animeRef: closeAnimeRef } = useAnime({
+    targets: ".menu-item",
+    translateY: ["0%", "100%"],
+    opacity: [1, 0],
+    duration: 900,
+    autoplay: false,
+  });
 
-  //     const fetchCurrentPage = async () => {
-  //       const currentPageData = await getCurrentPage();
-  //       setCurrentPage(currentPageData);
-  //     };
+  const { animeRef: initialAnimeRef } = useAnime({
+    targets: ".menu-item",
+    translateY: ["100%", "0%"],
+    opacity: [0, 1],
+    autoplay: false,
+  });
 
-  //     fetchHomePage();
-  //     fetchCurrentPage();
-  //   }, []);
+  useEffect(() => {
+    if (!loading && initialAnimeRef.current) {
+      initialAnimeRef.current;
+      setLoading(true);
+      return;
+    }
+
+    if (animeRef.current && active) {
+      animeRef.current.play();
+    }
+
+    if (closeAnimeRef.current && !active) {
+      closeAnimeRef.current.play();
+    }
+  }, [active]);
 
   function handleMenuClick() {
-    // if (animeRef.current && !active) {
-    //   animeRef.current.play();
-    // }
-
     setActive(!active);
   }
 
@@ -99,7 +109,7 @@ const Header = ({ model }) => {
         <Hamburger active={active} handleMenuClick={handleMenuClick} />
       )}
 
-      {/* <div
+      <div
         className={clsx(
           showStyles && styles.menu,
           showStyles && "base-grid",
@@ -112,14 +122,30 @@ const Header = ({ model }) => {
           aria-label="Main menu"
         >
           <ul role="list">
-            {navigationLinks.map((link, index) => (
-              <li key={index}>
-                <Link href={link.url}>{link.name}</Link>
-              </li>
-            ))}
+            <div className={styles.mainLinks}>
+              {navigationLinks
+                .filter((link) => link.main)
+                .map((link, index) => (
+                  <li
+                    className={clsx("menu-item", styles.menuItem)}
+                    key={index}
+                  >
+                    <Link href={link.url}>{link.name}</Link>
+                  </li>
+                ))}
+            </div>
+            <div className={styles.otherLinks}>
+              {navigationLinks
+                .filter((link) => !link.main)
+                .map((link, index) => (
+                  <li className="menu-item" key={index}>
+                    <Link href={link.url}>{link.name}</Link>
+                  </li>
+                ))}
+            </div>
           </ul>
         </nav>
-      </div> */}
+      </div>
 
       <NavAnimationShapes active={active} />
     </header>

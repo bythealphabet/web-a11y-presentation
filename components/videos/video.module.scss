@@ -1,0 +1,31 @@
+.root {
+  width: 100vw;
+  min-height: 100vh;
+
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("/videos/drummer-video.mp4");
+
+  video {
+    z-index: -1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    grid-column: 1 / -1;
+    object-fit: cover;
+    // background-position: center;
+    background-size: contain;
+  }
+
+  @media (max-width: 768px) {
+    video {
+      transform: translate(-50%, -50%) scale(0.8); /* More zoomed out on mobile */
+    }
+  }
+}

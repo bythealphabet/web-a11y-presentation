@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { CardsProps, Card } from "@/components/cards/cards";
 import styles from "./topic.module.scss";
-import { markdownToIPresentation } from "@/containers/markdownToIPresentation";
+import { markdownToIPresentation } from "@/utils/markdownToIPresentation";
 import Pptgenerator from "@/components/pptgenerator/pptgenerator";
 import Slide from "@/components/slides/slide";
 
