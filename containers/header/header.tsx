@@ -7,6 +7,7 @@ import Logo from "@/components/logo/logo";
 import Hamburger from "@/components/header-components/hamburger/hamburger";
 import NavAnimationShapes from "@/components/header-components/nav-animation-shapes/nav-animation-shapes";
 import useAnime from "@/hooks/useAnime";
+import { useNavigationState } from "@/store/useNavigationState";
 
 const navigationLinks = [
   {
@@ -51,12 +52,11 @@ const navigationLinks = [
   },
 ];
 
-const Header = ({ model }) => {
-  const [active, setActive] = useState(false);
-  const [loading, setLoading] = useState(false);
+const Header = () => {
   const showStyles = true;
+  const { isMenuOpen, setIsMenuOpen } = useNavigationState();
 
-  const { animeRef } = useAnime({
+  const openAnimeRef = useAnime({
     targets: ".menu-item",
     translateY: ["100%", "0%"],
     opacity: [0, 1],
@@ -67,7 +67,7 @@ const Header = ({ model }) => {
     autoplay: false,
   });
 
-  const { animeRef: closeAnimeRef } = useAnime({
+  const closeAnimeRef = useAnime({
     targets: ".menu-item",
     translateY: ["0%", "100%"],
     opacity: [1, 0],
@@ -82,32 +82,21 @@ const Header = ({ model }) => {
     autoplay: false,
   });
 
-  useEffect(() => {
-    if (!loading && initialAnimeRef.current) {
-      initialAnimeRef.current;
-      setLoading(true);
-      return;
+  function handleMenuClick(open: boolean) {
+    setIsMenuOpen(open);
+    if (openAnimeRef.animeRef.current && closeAnimeRef.animeRef.current) {
+      if (open) {
+        openAnimeRef.animeRef.current.play();
+      } else {
+        closeAnimeRef.animeRef.current.play();
+      }
     }
-
-    if (animeRef.current && active) {
-      animeRef.current.play();
-    }
-
-    if (closeAnimeRef.current && !active) {
-      closeAnimeRef.current.play();
-    }
-  }, [active]);
-
-  function handleMenuClick() {
-    setActive(!active);
   }
 
   return (
     <header className={clsx(showStyles && "sub-grid", styles.root)}>
       <Logo />
-      {showStyles && (
-        <Hamburger active={active} handleMenuClick={handleMenuClick} />
-      )}
+      {showStyles && <Hamburger handleMenuClick={handleMenuClick} />}
 
       <div
         className={clsx(
@@ -147,7 +136,7 @@ const Header = ({ model }) => {
         </nav>
       </div>
 
-      <NavAnimationShapes active={active} />
+      <NavAnimationShapes active={isMenuOpen} />
     </header>
   );
 };

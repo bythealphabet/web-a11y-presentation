@@ -1,21 +1,22 @@
 import clsx from "clsx";
 import hamburgerStyles from "./hamburger.module.scss";
+import { useNavigationState } from "@/store/useNavigationState";
 
 interface HamburgerProps {
-  active: boolean;
-  handleMenuClick: () => void;
+  handleMenuClick: (open: boolean) => void;
 }
 
-function Hamburger({ active, handleMenuClick }: HamburgerProps) {
+function Hamburger({ handleMenuClick }: HamburgerProps) {
+  const { isMenuOpen } = useNavigationState();
   function handleClick() {
-    handleMenuClick();
+    handleMenuClick(!isMenuOpen);
   }
 
   return (
     <button
       className={clsx(hamburgerStyles.hamburgerMenu)}
       aria-controls="primary-navigation"
-      aria-expanded={active}
+      aria-expanded={isMenuOpen}
       onClick={() => handleClick()}
     >
       <svg className={hamburgerStyles.hamburger} viewBox="0 0 80 80">
