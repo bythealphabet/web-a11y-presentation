@@ -3,6 +3,7 @@ import "./globals.scss";
 import { fonts } from "./fonts";
 // import { Providers } from "./providers";
 import Header from "@/containers/header/header";
+import ShortcutModal from "@/components/modal/shortcutModal";
 import clsx from "clsx";
 
 export const metadata: Metadata = {
@@ -20,9 +21,11 @@ export default function RootLayout({
     <html lang="en" className={fonts.rubik.variable}>
       <body>
         <div className={clsx({ ["base-grid root-page"]: showStyles })}>
-          <Header model={{}} />
+          <Header />
+
           {children}
         </div>
+        <ShortcutModal />
       </body>
     </html>
   );
