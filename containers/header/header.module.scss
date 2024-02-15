@@ -5,6 +5,7 @@
   height: var(--header-height);
 
   .menu {
+    visibility: var(--menuVisible, hidden);
     z-index: 10;
     position: fixed;
     overflow: hidden;

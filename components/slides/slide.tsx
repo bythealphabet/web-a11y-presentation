@@ -8,7 +8,7 @@ import {
   // slidesModel3,
 } from "@/containers/slidesModels"; // Assuming you have multiple models
 import { useState } from "react";
-import Modal from "../modal/modal";
+import Modal from "../modal/regularModal/modal";
 
 function Slide({ article }: { article: any }) {
   const [openDialog, setOpenDialog] = useState(false);

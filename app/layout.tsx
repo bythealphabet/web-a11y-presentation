@@ -3,7 +3,7 @@ import "./globals.scss";
 import { fonts } from "./fonts";
 // import { Providers } from "./providers";
 import Header from "@/containers/header/header";
-import ShortcutModal from "@/components/modal/shortcutModal";
+import ShortcutsModal from "@/components/modal/shortcutsModal/shortcutsModal";
 import clsx from "clsx";
 
 export const metadata: Metadata = {
@@ -24,8 +24,8 @@ export default function RootLayout({
           <Header />
 
           {children}
+          <ShortcutsModal />
         </div>
-        <ShortcutModal />
       </body>
     </html>
   );

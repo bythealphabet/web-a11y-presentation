@@ -12,7 +12,7 @@ export const useKbShortcutState = create<{
   isShortcutModalOpen: boolean;
   setIsShortcutModalOpen: (i: boolean) => void;
 }>((set) => ({
-  isShortcutModalOpen: false,
+  isShortcutModalOpen: true,
   setIsShortcutModalOpen: (isShortcutModalOpen: boolean) =>
     set({ isShortcutModalOpen }),
 }));

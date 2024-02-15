@@ -55,6 +55,7 @@ const navigationLinks = [
 const Header = () => {
   const showStyles = true;
   const { isMenuOpen, setIsMenuOpen } = useNavigationState();
+  const menuRef = React.useRef<HTMLDivElement>(null);
 
   const openAnimeRef = useAnime({
     targets: ".menu-item",
@@ -84,10 +85,16 @@ const Header = () => {
 
   function handleMenuClick(open: boolean) {
     setIsMenuOpen(open);
-    if (openAnimeRef.animeRef.current && closeAnimeRef.animeRef.current) {
+    if (
+      openAnimeRef.animeRef.current &&
+      closeAnimeRef.animeRef.current &&
+      menuRef.current
+    ) {
       if (open) {
+        menuRef.current.style.setProperty("--menuVisible", "visible");
         openAnimeRef.animeRef.current.play();
       } else {
+        menuRef.current.style.setProperty("--menuVisible", "hidden");
         closeAnimeRef.animeRef.current.play();
       }
     }
@@ -104,6 +111,7 @@ const Header = () => {
           showStyles && "base-grid",
           showStyles && "menu"
         )}
+        ref={menuRef}
       >
         <nav
           className={clsx(showStyles && "sub-grid")}
