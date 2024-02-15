@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 import pptxgen from "pptxgenjs";
-import { markdownToIPresentation } from "@/containers/markdownToIPresentation";
+import { markdownToIPresentation } from "@/utils/markdownToIPresentation";
 
 async function generatePresentation(filePath) {
   const pres = new pptxgen();

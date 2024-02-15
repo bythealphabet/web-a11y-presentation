@@ -7,6 +7,7 @@ import Logo from "@/components/logo/logo";
 import Hamburger from "@/components/header-components/hamburger/hamburger";
 import NavAnimationShapes from "@/components/header-components/nav-animation-shapes/nav-animation-shapes";
 import useAnime from "@/hooks/useAnime";
+import { useNavigationState } from "@/store/useNavigationState";
 
 const navigationLinks = [
   {
@@ -51,55 +52,53 @@ const navigationLinks = [
   },
 ];
 
-const Header = ({ model }) => {
-  const [homePageUrl, setHomePageUrl] = useState("");
-  const [currentPage, setCurrentPage] = useState(null);
-  const [active, setActive] = useState(false);
+const Header = () => {
   const showStyles = true;
+  const { isMenuOpen, setIsMenuOpen } = useNavigationState();
 
-  const { animeRef } = useAnime({
-    targets: ".menu",
-    translateX: ["100%", "0%"],
+  const openAnimeRef = useAnime({
+    targets: ".menu-item",
+    translateY: ["100%", "0%"],
     opacity: [0, 1],
-    easing: "easeInOutQuad",
     duration: 900,
-    delay: 300,
+    delay: function (el, i, l) {
+      return 400 + i * 100;
+    },
     autoplay: false,
   });
 
-  //   useEffect(() => {
-  //     // Assuming getContentService and getCurrentPage are functions that fetch the necessary data
-  //     // These functions need to be implemented according to your project's architecture
-  //     const fetchHomePage = async () => {
-  //       const homePage = await getContentService().getHomePageForContent();
-  //       setHomePageUrl(homePage?.url);
-  //     };
+  const closeAnimeRef = useAnime({
+    targets: ".menu-item",
+    translateY: ["0%", "100%"],
+    opacity: [1, 0],
+    duration: 900,
+    autoplay: false,
+  });
 
-  //     const fetchCurrentPage = async () => {
-  //       const currentPageData = await getCurrentPage();
-  //       setCurrentPage(currentPageData);
-  //     };
+  const { animeRef: initialAnimeRef } = useAnime({
+    targets: ".menu-item",
+    translateY: ["100%", "0%"],
+    opacity: [0, 1],
+    autoplay: false,
+  });
 
-  //     fetchHomePage();
-  //     fetchCurrentPage();
-  //   }, []);
-
-  function handleMenuClick() {
-    // if (animeRef.current && !active) {
-    //   animeRef.current.play();
-    // }
-
-    setActive(!active);
+  function handleMenuClick(open: boolean) {
+    setIsMenuOpen(open);
+    if (openAnimeRef.animeRef.current && closeAnimeRef.animeRef.current) {
+      if (open) {
+        openAnimeRef.animeRef.current.play();
+      } else {
+        closeAnimeRef.animeRef.current.play();
+      }
+    }
   }
 
   return (
     <header className={clsx(showStyles && "sub-grid", styles.root)}>
       <Logo />
-      {showStyles && (
-        <Hamburger active={active} handleMenuClick={handleMenuClick} />
-      )}
+      {showStyles && <Hamburger handleMenuClick={handleMenuClick} />}
 
-      {/* <div
+      <div
         className={clsx(
           showStyles && styles.menu,
           showStyles && "base-grid",
@@ -112,16 +111,32 @@ const Header = ({ model }) => {
           aria-label="Main menu"
         >
           <ul role="list">
-            {navigationLinks.map((link, index) => (
-              <li key={index}>
-                <Link href={link.url}>{link.name}</Link>
-              </li>
-            ))}
+            <div className={styles.mainLinks}>
+              {navigationLinks
+                .filter((link) => link.main)
+                .map((link, index) => (
+                  <li
+                    className={clsx("menu-item", styles.menuItem)}
+                    key={index}
+                  >
+                    <Link href={link.url}>{link.name}</Link>
+                  </li>
+                ))}
+            </div>
+            <div className={styles.otherLinks}>
+              {navigationLinks
+                .filter((link) => !link.main)
+                .map((link, index) => (
+                  <li className="menu-item" key={index}>
+                    <Link href={link.url}>{link.name}</Link>
+                  </li>
+                ))}
+            </div>
           </ul>
         </nav>
-      </div> */}
+      </div>
 
-      <NavAnimationShapes active={active} />
+      <NavAnimationShapes active={isMenuOpen} />
     </header>
   );
 };
