@@ -6,7 +6,7 @@ import {
   slidesModel1,
   // slidesModel2,
   // slidesModel3,
-} from "@/containers/slidesModels"; // Assuming you have multiple models
+} from "@/utils/slidesModels"; // Assuming you have multiple models
 import { useState } from "react";
 import Modal from "../modal/regularModal/modal";
 

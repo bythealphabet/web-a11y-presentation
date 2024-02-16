@@ -5,11 +5,13 @@
   grid-row: 2;
 
   display: grid;
-  grid-template-rows: 10rem auto auto 30rem 10rem;
+  grid-template-rows: 10rem repeat(2, minmax(1rem, auto)) auto 10rem;
   gap: 2rem 0;
   background-color: var(--color-white);
   border-radius: 2rem;
   margin: 4rem 0;
+  width: 128rem;
+  height: 72rem;
 
   h3 {
     grid-column: 2 / -2;
@@ -20,6 +22,7 @@
   }
 
   .slideTopic {
+    line-height: 1.2;
     grid-column: 2 / -2;
     grid-row: 2;
   }
@@ -27,7 +30,6 @@
   .slideTopicText {
     grid-column: 2 / span 5;
     grid-row: 4;
-    align-self: center;
     font-size: 2.4rem;
   }
 
@@ -38,6 +40,7 @@
     border-radius: 2rem;
     border: solid 1px #fff;
     overflow: hidden;
+    height: 40rem;
 
     img {
       width: 100%;
